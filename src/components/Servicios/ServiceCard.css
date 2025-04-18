@@ -1,0 +1,84 @@
+/* src/components/ServiceCard.css */
+
+.service-card {
+    border-radius: 0.60rem !important; /* Bordes un poco más redondeados */
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    border: 1px solid #e0e0e0; /* Borde sutil */
+    background-color: #ffffff; /* Fondo blanco */
+  }
+  
+  /* Efecto hover para TODA la tarjeta */
+  .service-card:hover {
+    transform: translateY(-6px); /* Elevar un poco más */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important; /* Sombra más definida */
+  }
+  
+  .service-card-img-container {
+    position: relative;
+    width: 100%;
+    background-color: #f8f9fa; /* Fondo gris claro para espacios vacíos de la imagen */
+    overflow: hidden;
+    /* Los bordes redondeados superiores los tomará de .service-card */
+  }
+  
+  .service-card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* object-fit: contain; ya está en el style inline */
+    object-position: center center;
+    /* Quitamos la transición de escala de aquí para que no interfiera con el hover de la card */
+    /* transition: transform 0.3s ease-in-out; */
+  }
+  
+  /* El overlay es opcional, puedes quitarlo si no te gusta */
+  .service-card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Inicia transparente */
+    transition: background-color 0.3s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .service-card:hover .service-card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.08); /* Overlay muy sutil en hover */
+  }
+  
+  .service-card-title {
+    font-weight: 600;
+    color: #333; /* Color de título */
+  }
+  
+  .service-card-description {
+    height: 6.5em; /* Un poco más de altura para descripción */
+    overflow-y: auto;
+    font-size: 0.85rem; /* Texto un poco más pequeño */
+    line-height: 1.5;
+    color: #555; /* Color de texto */
+    background-color: #ffffff; /* Fondo igual al de la card */
+    border: none; /* Sin borde interno */
+    padding: 0; /* Sin padding interno, el CardBody ya tiene */
+    margin-bottom: 1rem !important; /* Ajusta margen inferior */
+    flex-shrink: 0;
+  }
+  
+  /* Estilo para scrollbar (opcional, webkit) */
+  .service-card-description::-webkit-scrollbar {
+    width: 6px;
+  }
+  .service-card-description::-webkit-scrollbar-track {
+    background: #f8f9fa; /* Fondo track */
+    border-radius: 10px;
+  }
+  .service-card-description::-webkit-scrollbar-thumb {
+    background: #d0d0d0; /* Color scrollbar */
+    border-radius: 10px;
+  }
+  .service-card-description::-webkit-scrollbar-thumb:hover {
+    background: #b0b0b0; /* Color scrollbar al pasar mouse */
+  }

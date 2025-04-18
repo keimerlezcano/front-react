@@ -1,0 +1,141 @@
+/* src/assets/Login.css */
+
+/* Contenedor principal que ocupa toda la pantalla y usa Flexbox */
+.login-split-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden; /* Evitar barras de scroll innecesarias */
+  }
+  
+  /* Mitad Izquierda: Imagen */
+  .login-image-half {
+    flex: 1 1 55%; /* Ocupa el 55% del espacio, permite encogerse/crecer */
+    background-image: url('../assets/donjuan.jpg'); /* <-- RUTA A TU IMAGEN */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex; /* Para centrar contenido interno si lo hubiera */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Para posible overlay sobre imagen */
+  }
+  
+  /* Mitad Derecha: Formulario */
+  .login-form-half {
+    flex: 1 1 45%; /* Ocupa el 45% del espacio */
+    background-color: #f8f9fa; /* Un fondo claro para el formulario */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px; /* Padding interno */
+  }
+  
+  /* La tarjeta que contiene el formulario */
+  .login-form-card {
+    width: 100%;
+    max-width: 400px; /* Máximo ancho del formulario */
+    padding: 30px 25px;
+    border: 1px solid #dee2e6; /* Borde sutil */
+    border-radius: 8px;
+    background-color: #ffffff; /* Fondo blanco sólido */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  }
+  
+  /* Logo dentro del formulario (opcional) */
+  .login-form-logo {
+    display: block;
+    max-width: 120px;
+    height: auto;
+    margin: 0 auto 20px auto;
+  }
+  
+  /* Título del formulario */
+  .login-form-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+    font-weight: 600;
+    font-size: 1.5rem; /* Tamaño de título */
+  }
+  
+  /* Labels e Inputs */
+  .login-form-card .form-label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.3rem;
+  }
+  
+  .login-form-card .form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 0.6rem 0.75rem;
+  }
+  
+  /* Input focus con NUEVO color ámbar (#FFC107) */
+  .login-form-card .form-control:focus {
+     border-color: #FFC107; /* Borde ámbar */
+     box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25); /* Sombra ámbar suave */
+  }
+  
+  /* Botón con NUEVO color ámbar (#FFC107) y texto NEGRO */
+  .login-form-card .btn-primary {
+    background-color: #FFC107; /* Ámbar base */
+    border-color: #FFC107;
+    color: black !important; /* Texto NEGRO */
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .login-form-card .btn-primary:hover {
+    background-color: #E0A800; /* Ámbar un poco más oscuro para hover */
+    border-color: #E0A800;
+    color: black !important;
+  }
+  
+  .login-form-card .btn-primary:disabled {
+    background-color: #FFECB3; /* Ámbar muy pálido deshabilitado */
+    border-color: #FFECB3;
+    color: #6c757d !important; /* Texto gris */
+  }
+  
+  /* Spinner */
+  .login-form-card .spinner-border-sm {
+      width: 1em;
+      height: 1em;
+      border-width: 0.15em;
+      color: black; /* Spinner negro */
+  }
+  
+  /* --- Responsive Design --- */
+  /* En pantallas más pequeñas, apilar las secciones */
+  @media (max-width: 768px) {
+    .login-split-container {
+      flex-direction: column; /* Cambiar a columna */
+    }
+  
+    .login-image-half {
+      flex: 0 0 250px; /* Altura fija para la imagen en móvil */
+      order: 1; /* Mostrar imagen arriba */
+    }
+  
+    .login-form-half {
+      flex: 1 1 auto; /* Que ocupe el resto del espacio */
+      order: 2; /* Formulario debajo */
+      padding: 20px 15px; /* Menos padding en móvil */
+       background-color: #f8f9fa; /* Fondo contenedor móvil */
+    }
+  
+    .login-form-card {
+      max-width: none; /* Permitir que ocupe más ancho en móvil */
+      padding: 25px 20px;
+      box-shadow: none; /* Quitar sombra en móvil */
+      border: none; /* Quitar borde en móvil */
+      background-color: #f8f9fa; /* Hacer que el fondo sea el mismo que el contenedor */
+    }
+  }
