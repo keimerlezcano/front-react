@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSearch, faEdit, faTrash, faExchangeAlt, faEye } from '@fortawesome/free-solid-svg-icons';
 
 import { getAllCategories, createCategory, updateCategory, deleteCategory } from '../api/categoryApi';
-import { getAllSpecimens, createSpecimen, updateSpecimen, deleteSpecimen } from '../api/specimenApi';
+import { getSpecimens, createSpecimen, updateSpecimen, deleteSpecimen } from '../api/specimenApi';
 import { getAllSedes } from '../api/sedeApi';
 import { getAllClients } from '../api/clientApi';
 
@@ -64,7 +64,7 @@ const SpecimensPage = () => {
         clearPageError();
         let accumulatedErrors = [];
         try {
-            const results = await Promise.allSettled([ getAllCategories(), getAllSpecimens(), getAllSedes(), getAllClients() ]);
+            const results = await Promise.allSettled([ getAllCategories(), getSpecimens(), getAllSedes(), getAllClients() ]);
             const [categoriesResult, specimensResult, sedesResult, clientsResult] = results;
 
             if (categoriesResult.status === 'fulfilled' && Array.isArray(categoriesResult.value)) {
@@ -88,6 +88,11 @@ const SpecimensPage = () => {
     }, [getFriendlyErrorMessage, clearPageError]);
 
     useEffect(() => { fetchData(); }, [fetchData]);
+
+    // Nueva función para recargar sedes
+    const recargarSedes = useCallback(() => {
+        fetchData(false);
+    }, [fetchData]);
 
     const toggleCategoryCollapse = useCallback((categoryId) => { const id = categoryId?.toString(); if(id) setOpenCategories(prev => ({ ...prev, [id]: !prev[id] })); }, []);
 
@@ -246,7 +251,7 @@ const SpecimensPage = () => {
             {error && (
                  <Row className="justify-content-center">
                     <Col xs="12" md="10" lg="8">
-                        <Alert color="danger" className='mt-3' isOpen={!!error} toggle={clearPageError} fade={true} timeout={ALERT_FADE_TIMEOUT}>
+                        <Alert color="danger" className='mt-3' isOpen={!!error} toggle={clearPageError} fade={true} timeout={3000}>
                             {error}
                         </Alert>
                     </Col>

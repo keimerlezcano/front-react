@@ -11,7 +11,7 @@ import { faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 // APIs
 import { getAllClients } from '../../api/clientApi';
 import { getAllServices } from '../../api/servicesApi';
-import { getAllSpecimens } from '../../api/specimenApi';
+import { getSpecimens } from '../../api/specimenApi';
 
 // Helper para formatear moneda (si no lo tienes en un archivo utils)
 const formatDropdownCurrency = (value) => {
@@ -58,7 +58,7 @@ const ContractForm = ({
                 const [clientsData, servicesData, specimensData] = await Promise.all([
                     getAllClients(),
                     getAllServices(),
-                    !initialData ? getAllSpecimens() : Promise.resolve([])
+                    !initialData ? getSpecimens() : Promise.resolve([])
                 ]);
                 setClients(Array.isArray(clientsData) ? clientsData : []);
                 setServices(Array.isArray(servicesData) ? servicesData : []); // Guarda servicios

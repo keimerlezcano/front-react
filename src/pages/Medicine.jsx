@@ -22,7 +22,7 @@ import {
   updateMedicine,
   deleteMedicine
 } from "../api/medicineApi";
-import { getAllSpecimens } from "../api/specimenApi";
+import { getSpecimens } from "../api/specimenApi";
 
 const Medicine = () => {
   // --- Estados del Componente (Sin Cambios) ---
@@ -58,7 +58,7 @@ const Medicine = () => {
   const fetchSpecimens = useCallback(async () => {
     setLoadingSpecimens(true);
     try {
-      const specimenData = await getAllSpecimens();
+      const specimenData = await getSpecimens();
       setSpecimens(specimenData || []);
     } catch (error) {
       console.error("Error fetching specimens:", error.response || error);

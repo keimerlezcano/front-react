@@ -22,7 +22,7 @@ import {
   updateVacunacion,
   deleteVacunacion
 } from "../api/vacunacionApi";
-import { getAllSpecimens } from "../api/specimenApi";
+import { getSpecimens } from "../api/specimenApi";
 
 const VacunacionPage = () => {
   // --- Estados (Sin Cambios) ---
@@ -59,7 +59,7 @@ const VacunacionPage = () => {
   const fetchSpecimens = useCallback(async () => {
     setLoadingSpecimens(true);
     try {
-      const specimenData = await getAllSpecimens();
+      const specimenData = await getSpecimens();
       setSpecimens(specimenData || []);
     } catch (error) {
       console.error("Error fetching specimens:", error.response || error);
